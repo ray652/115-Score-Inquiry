@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8">
   <title>成績是否會被當試算</title>
   <link rel="stylesheet" href="style.css">
 </head>
@@ -10,36 +10,32 @@
 <h1>成績是否會被當試算</h1>
 
 <table>
-  <thead>
-    <tr>
-      <th>項目</th>
-      <th>權重 (%)</th>
-      <th>成績</th>
-    </tr>
-  </thead>
-  <tbody id="scoreTable">
-    <tr>
-      <td>期中考</td>
-      <td><input type="number" class="weight" value="30"></td>
-      <td><input type="number" class="score"></td>
-    </tr>
-    <tr>
-      <td>期末考</td>
-      <td><input type="number" class="weight" value="40"></td>
-      <td><input type="number" class="score"></td>
-    </tr>
-    <tr>
-      <td>作業</td>
-      <td><input type="number" class="weight" value="30"></td>
-      <td><input type="number" class="score"></td>
-    </tr>
-  </tbody>
+  <tr>
+    <th>項目</th>
+    <th>權重 (%)</th>
+    <th>成績</th>
+  </tr>
+  <tr>
+    <td>期中考</td>
+    <td><input type="number" id="w1" value="30"></td>
+    <td><input type="number" id="s1" value="50"></td>
+  </tr>
+  <tr>
+    <td>期末考</td>
+    <td><input type="number" id="w2" value="40"></td>
+    <td><input type="number" id="s2" value="60"></td>
+  </tr>
+  <tr>
+    <td>作業</td>
+    <td><input type="number" id="w3" value="30"></td>
+    <td><input type="number" id="s3" value="20"></td>
+  </tr>
 </table>
 
-<label>
-  及格線：
-  <input type="number" id="passLine" value="60">
-</label>
+<br>
+
+及格線：
+<input type="number" id="pass" value="60">
 
 <br><br>
 
@@ -47,6 +43,7 @@
 
 <h2 id="result">請輸入成績後計算</h2>
 
-<script src="script.js"></script>
+<!-- ⚠️ 這行很重要 -->
+<script src="code.js"></script>
 </body>
 </html>
