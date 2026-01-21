@@ -29,7 +29,7 @@ function calculate() {
     resultEl.style.color = "green";
   } else {
     resultEl.textContent =
-      `❌ 總成績 ${finalScore.toFixed(2)} 分，有被當風險`;
+      `❌ 總成績 ${finalScore.toFixed(2)} 分，教授菜菜撈撈`;
     resultEl.style.color = "red";
   }
 }
