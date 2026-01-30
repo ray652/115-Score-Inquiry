@@ -5,11 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>成績是否會被當試算</title>
   <link rel="stylesheet" href="style.css" />
+  <script defer src="code.js"></script>
 </head>
 
 <body>
-  <main class="page">
-    <section class="card">
+  <div class="wrap">
+    <div class="card">
       <h1>成績是否會被當試算</h1>
 
       <table>
@@ -36,21 +37,19 @@
       </table>
 
       <div class="controls">
-        <label class="passline">
+        <div class="passline">
           <span>及格線：</span>
           <select id="passLevel">
             <option value="60" selected>大學：60</option>
             <option value="70">碩士：70</option>
           </select>
-        </label>
+        </div>
 
-        <button class="btn" type="button" onclick="calculate()">計算</button>
+        <button id="btnCalc" type="button">計算</button>
       </div>
 
-      <h2 id="result" class="result">請輸入成績後計算</h2>
-    </section>
-  </main>
-
-  <script src="code.js"></script>
+      <h2 id="result">請輸入成績後計算</h2>
+    </div>
+  </div>
 </body>
 </html>
