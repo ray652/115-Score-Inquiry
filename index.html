@@ -1,49 +1,56 @@
 <!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>成績是否會被當試算</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css" />
 </head>
+
 <body>
+  <main class="page">
+    <section class="card">
+      <h1>成績是否會被當試算</h1>
 
-<h1>成績是否會被當試算</h1>
+      <table>
+        <tr>
+          <th>項目</th>
+          <th>權重 (%)</th>
+          <th>成績</th>
+        </tr>
+        <tr>
+          <td>期中考</td>
+          <td><input type="number" id="w1" min="0" max="100" placeholder="例：30"></td>
+          <td><input type="number" id="s1" min="0" max="100" placeholder="0~100"></td>
+        </tr>
+        <tr>
+          <td>期末考</td>
+          <td><input type="number" id="w2" min="0" max="100" placeholder="例：40"></td>
+          <td><input type="number" id="s2" min="0" max="100" placeholder="0~100"></td>
+        </tr>
+        <tr>
+          <td>平時成績</td>
+          <td><input type="number" id="w3" min="0" max="100" placeholder="例：30"></td>
+          <td><input type="number" id="s3" min="0" max="100" placeholder="0~100"></td>
+        </tr>
+      </table>
 
-<table>
-  <tr>
-    <th>項目</th>
-    <th>權重 (%)</th>
-    <th>成績</th>
-  </tr>
-  <tr>
-    <td>期中考</td>
-    <td><input type="number" id="w1" value=""></td>
-    <td><input type="number" id="s1" value=""></td>
-  </tr>
-  <tr>
-    <td>期末考</td>
-    <td><input type="number" id="w2" value=""></td>
-    <td><input type="number" id="s2" value=""></td>
-  </tr>
-  <tr>
-    <td>平時成績</td>
-    <td><input type="number" id="w3" value=""></td>
-    <td><input type="number" id="s3" value=""></td>
-  </tr>
-</table>
+      <div class="controls">
+        <label class="passline">
+          <span>及格線：</span>
+          <select id="passLevel">
+            <option value="60" selected>大學：60</option>
+            <option value="70">碩士：70</option>
+          </select>
+        </label>
 
-<br>
+        <button class="btn" type="button" onclick="calculate()">計算</button>
+      </div>
 
-及格線：
-<input type="number" id="pass" value="60">
+      <h2 id="result" class="result">請輸入成績後計算</h2>
+    </section>
+  </main>
 
-<br><br>
-
-<button onclick="calculate()">計算</button>
-
-<h2 id="result">請輸入成績後計算</h2>
-
-<!-- ⚠️ 這行很重要 -->
-<script src="code.js"></script>
+  <script src="code.js"></script>
 </body>
 </html>

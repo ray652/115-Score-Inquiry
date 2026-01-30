@@ -1,18 +1,112 @@
+/* 基本 */
+* { box-sizing: border-box; }
 body {
-  font-family: Arial, sans-serif;
-  padding: 30px;
+  margin: 0;
+  font-family: system-ui, -apple-system, "Segoe UI", Arial, "Noto Sans TC", sans-serif;
+  background: #f6f7fb;
+  color: #111;
 }
 
+/* 置中容器 */
+.page {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;  /* 水平置中 */
+  align-items: flex-start;   /* 內容從上開始 */
+  padding: 48px 16px;
+}
+
+.card {
+  width: min(720px, 100%);
+  background: #fff;
+  border: 1px solid #e7e7e7;
+  border-radius: 14px;
+  padding: 28px 22px;
+  box-shadow: 0 8px 28px rgba(0,0,0,0.06);
+}
+
+/* 標題置中 */
+h1 {
+  margin: 0 0 18px 0;
+  text-align: center;
+  font-size: 34px;
+  letter-spacing: 0.5px;
+}
+
+/* 表格 */
 table {
+  width: 100%;
   border-collapse: collapse;
-  margin-bottom: 20px;
+  margin-top: 8px;
 }
 
 th, td {
-  border: 1px solid #ccc;
-  padding: 8px 12px;
+  border: 1px solid #ddd;
+  padding: 10px 10px;
+  text-align: center;
+  vertical-align: middle;
 }
 
-input {
-  width: 80px;
+th {
+  background: #f2f2f2;
+}
+
+input[type="number"] {
+  width: 90%;
+  padding: 6px 8px;
+  border: 1px solid #cfcfcf;
+  border-radius: 6px;
+  outline: none;
+}
+input[type="number"]:focus {
+  border-color: #6a8cff;
+}
+
+/* 控制列 */
+.controls {
+  margin-top: 16px;
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  justify-content: center; /* 置中 */
+  flex-wrap: wrap;
+}
+
+.passline {
+  display: inline-flex;
+  gap: 10px;
+  align-items: center;
+  font-size: 18px;
+}
+
+select {
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: 1px solid #cfcfcf;
+  background: #fff;
+  font-size: 16px;
+  outline: none;
+}
+select:focus {
+  border-color: #6a8cff;
+}
+
+.btn {
+  padding: 10px 18px;
+  border: 0;
+  border-radius: 10px;
+  background: #1f6feb;
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+}
+.btn:hover {
+  filter: brightness(0.95);
+}
+
+/* 結果 */
+.result {
+  margin-top: 18px;
+  text-align: center;
+  font-size: 22px;
 }
