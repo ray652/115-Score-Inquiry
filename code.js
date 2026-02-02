@@ -70,13 +70,16 @@ function calculate() {
 window.calculate = calculate;
 
 document.addEventListener("DOMContentLoaded", () => {
-  // ✅ 只綁定按鈕：按了才計算
-  const btn = document.getElementById("btnCalc");
-  if (btn) btn.addEventListener("click", calculate);
+  // 防止 form 自動 submit 觸發任何行為
+  const form = document.querySelector("form");
+  if (form) {
+    form.addEventListener("submit", (e) => e.preventDefault());
+  }
 
-  // ❌ 移除自動計算：不要綁 input / change，也不要一進頁面就算
-  // 也就是刪掉你原本這三段：
-  // 1) el.addEventListener("input", tryAutoCalculate);
-  // 2) passLevel.addEventListener("change", tryAutoCalculate);
-  // 3) tryAutoCalculate();
+  // 按鈕只做 click 計算
+  const btn = document.getElementById("btnCalc");
+  if (btn) {
+    btn.setAttribute("type", "button"); // 就算HTML忘了寫，也補上
+    btn.addEventListener("click", calculate);
+  }
 });
