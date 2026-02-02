@@ -63,7 +63,7 @@ function calculate() {
   resultEl.textContent =
     total >= pass
       ? `總成績：${total.toFixed(2)} 分 ✅ 通過（及格線：${levelText}）`
-      : `總成績：${total.toFixed(2)} 分 ❌ 未通過（及格線：${levelText}）`;
+      : `總成績：${total.toFixed(2)} 分 ❌ 教授菜菜撈撈（及格線：${levelText}）`;
 }
 
 /* ✅ 保險：掛到全域 */
