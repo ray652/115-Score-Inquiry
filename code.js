@@ -28,8 +28,8 @@ function calculate() {
   const pass = Number(document.getElementById("passLevel").value);
   const resultEl = document.getElementById("result");
 
-  // 基本檢查：權重不可負
-  if ([w1, w2, w3].some(w => !Number.isFinite(w) || w < 0)) {
+  // 基本檢查：權重不可負（也可加上 >100 檢查）
+  if ([w1, w2, w3].some(w => !Number.isFinite(w) || w < 0 || w > 100)) {
     resultEl.textContent = "權重請輸入 0~100 的數字";
     return;
   }
@@ -66,55 +66,17 @@ function calculate() {
       : `總成績：${total.toFixed(2)} 分 ❌ 未通過（及格線：${levelText}）`;
 }
 
-function tryAutoCalculate() {
-  const w1 = getWeight("w1");
-  const w2 = getWeight("w2");
-  const w3 = getWeight("w3");
-
-  const s1 = getNumber("s1");
-  const s2 = getNumber("s2");
-  const s3 = getNumber("s3");
-
-  const resultEl = document.getElementById("result");
-
-  const wSum = w1 + w2 + w3;
-
-  // 權重加總不到 100 → 提示，不計算
-  if (!nearlyEqual(wSum, 100)) {
-    resultEl.textContent = `權重目前 ${wSum.toFixed(2)}%，需滿 100% 才會自動計算`;
-    return;
-  }
-
-  // 只檢查權重>0 的成績
-  const requiredScoresOk =
-    (w1 === 0 || s1 !== null) &&
-    (w2 === 0 || s2 !== null) &&
-    (w3 === 0 || s3 !== null);
-
-  if (!requiredScoresOk) {
-    resultEl.textContent = "權重已滿 100%，請把「有設定權重」的成績填完即可自動計算";
-    return;
-  }
-
-  // ✅ 條件達成 → 自動計算
-  calculate();
-}
-
 /* ✅ 保險：掛到全域 */
 window.calculate = calculate;
 
 document.addEventListener("DOMContentLoaded", () => {
+  // ✅ 只綁定按鈕：按了才計算
   const btn = document.getElementById("btnCalc");
   if (btn) btn.addEventListener("click", calculate);
 
-  ["w1", "w2", "w3", "s1", "s2", "s3"].forEach(id => {
-    const el = document.getElementById(id);
-    if (el) el.addEventListener("input", tryAutoCalculate);
-  });
-
-  const passLevel = document.getElementById("passLevel");
-  if (passLevel) passLevel.addEventListener("change", tryAutoCalculate);
-
-  // 進頁面先跑一次（避免預設值已=100卻不算）
-  tryAutoCalculate();
+  // ❌ 移除自動計算：不要綁 input / change，也不要一進頁面就算
+  // 也就是刪掉你原本這三段：
+  // 1) el.addEventListener("input", tryAutoCalculate);
+  // 2) passLevel.addEventListener("change", tryAutoCalculate);
+  // 3) tryAutoCalculate();
 });
